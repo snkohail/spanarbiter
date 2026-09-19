@@ -1,0 +1,87 @@
+{
+ "canonical_case_id": "EN001",
+ "text_len": 2332,
+ "text_sha256": "e49997761c3a1deb947bff054f4fdc631d575319d1b2521e179725548173f29f",
+ "blind": true,
+ "demonstrates": "one factual narrative against three events; a citation with or without the rule it states; a sentence that turns from the defendant's argument into the court's finding; a passing remark only A marked",
+ "spans": [
+  {
+   "kind": "rhetorical",
+   "label": "PREAMBLE",
+   "begin": 0,
+   "end": 189
+  },
+  {
+   "kind": "rhetorical",
+   "label": "FACTS",
+   "begin": 191,
+   "end": 343
+  },
+  {
+   "kind": "rhetorical",
+   "label": "FACTS",
+   "begin": 344,
+   "end": 399
+  },
+  {
+   "kind": "rhetorical",
+   "label": "FACTS",
+   "begin": 400,
+   "end": 510
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_PLAINTIFF",
+   "begin": 512,
+   "end": 680
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_DEFENDANT",
+   "begin": 682,
+   "end": 876
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ISSUE",
+   "begin": 878,
+   "end": 1056
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1058,
+   "end": 1295
+  },
+  {
+   "kind": "rhetorical",
+   "label": "LAW_REFERENCE",
+   "begin": 1058,
+   "end": 1195
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1297,
+   "end": 1623
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1625,
+   "end": 1809
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1925,
+   "end": 2068
+  },
+  {
+   "kind": "rhetorical",
+   "label": "DECISION",
+   "begin": 2070,
+   "end": 2332
+  }
+ ]
+}

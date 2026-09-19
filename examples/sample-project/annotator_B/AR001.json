@@ -1,0 +1,75 @@
+{
+ "canonical_case_id": "AR001",
+ "text_len": 1806,
+ "text_sha256": "1e5e6ed1fca399755a8f651d4068b17bb67025b9cb716c40c422b44f918632fc",
+ "blind": true,
+ "demonstrates": "Arabic: the relief sought, read as fact or as argument; one defence memorandum against its two defences; a citation nested in the reasoning by A only; a passing remark only A marked; a citation with or without the rule it states",
+ "spans": [
+  {
+   "kind": "rhetorical",
+   "label": "PREAMBLE",
+   "begin": 0,
+   "end": 196
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_PLAINTIFF",
+   "begin": 198,
+   "end": 369
+  },
+  {
+   "kind": "rhetorical",
+   "label": "FACTS",
+   "begin": 371,
+   "end": 577
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_DEFENDANT",
+   "begin": 579,
+   "end": 687
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_DEFENDANT",
+   "begin": 688,
+   "end": 753
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ISSUE",
+   "begin": 755,
+   "end": 855
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 857,
+   "end": 1064
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1066,
+   "end": 1298
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1380,
+   "end": 1615
+  },
+  {
+   "kind": "rhetorical",
+   "label": "LAW_REFERENCE",
+   "begin": 1389,
+   "end": 1474
+  },
+  {
+   "kind": "rhetorical",
+   "label": "DECISION",
+   "begin": 1617,
+   "end": 1806
+  }
+ ]
+}

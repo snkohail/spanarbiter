@@ -1,0 +1,58 @@
+{
+ "schema_version": "1.0",
+ "doc_id": "AR001",
+ "layer": "rhetorical",
+ "text_sha256": "1e5e6ed1fca399755a8f651d4068b17bb67025b9cb716c40c422b44f918632fc",
+ "decisions": [
+  {
+   "conflict_id": "AR001::rhetorical::0001",
+   "doc_id": "AR001",
+   "layer": "rhetorical",
+   "decision_type": "TAKE_A",
+   "shape": "ROLE_CLASH",
+   "spans": [
+    {
+     "begin": 198,
+     "end": 369,
+     "labels": [
+      "FACTS"
+     ],
+     "origin": "A"
+    }
+   ],
+   "note": "",
+   "fingerprint": "ac695534cc4557f7",
+   "reviewed": true,
+   "attempt_seconds": 33.9,
+   "cumulative_seconds": 33.9,
+   "visit_count": 1,
+   "revision_count": 0,
+   "decided_at": "2026-09-19T02:52:07+00:00"
+  },
+  {
+   "conflict_id": "AR001::rhetorical::0003",
+   "doc_id": "AR001",
+   "layer": "rhetorical",
+   "decision_type": "TAKE_A",
+   "shape": "SEGMENTATION",
+   "spans": [
+    {
+     "begin": 579,
+     "end": 753,
+     "labels": [
+      "ARGUMENT_DEFENDANT"
+     ],
+     "origin": "A"
+    }
+   ],
+   "note": "",
+   "fingerprint": "cb79cb3c5b79f483",
+   "reviewed": true,
+   "attempt_seconds": 8.8,
+   "cumulative_seconds": 8.8,
+   "visit_count": 1,
+   "revision_count": 0,
+   "decided_at": "2026-09-19T02:52:16+00:00"
+  }
+ ]
+}

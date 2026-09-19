@@ -1,0 +1,121 @@
+{
+ "canonical_case_id": "EN002",
+ "text": "IN THE COURT OF APPEAL, CIVIL CIRCUIT. Appeal number 76 of 2025, against the judgment of the Court of First Instance in case number 1544 of 2024. Appellant: Nasser Al-Kaabi. Respondent: Palm Crescent Properties LLC. Judgment delivered on 26 February 2026.\n\nThe appeal was filed on 18 November 2025, within the statutory period, and the respondent lodged a reply on 9 December 2025.\n\nBy its judgment of 30 October 2025 the Court of First Instance ordered the appellant to vacate the leased villa, to pay AED 96,000 in rent arrears for January to August 2025, and to bear the costs.\n\nThe appellant asks this court to set aside that judgment and to dismiss the claim for possession.\n\nThe appellant argues that acceptance of rent after expiry renewed the lease; whether that acceptance constitutes renewal is the issue on appeal.\n\nThe respondent answers that the cheques were accepted on account of arrears already due, not as rent for a renewed term, and that the notice was validly served by registered post at the address stated in the lease.\n\nArticle 6 of Law No. 26 of 2007 provides that a tenant who remains in occupation after the term, with the landlord's knowledge and without objection, holds over on the same terms. The provision turns on the landlord's conduct, not the tenant's.\n\nThe record shows that the respondent's property manager acknowledged receipt of the September and October cheques by e-mail without reservation. Acceptance without objection for two consecutive months is conduct from which knowledge and acquiescence are readily inferred.\n\nIt follows that the lease was renewed by operation of law for a further year from 1 September 2025, and that the notice served on 3 September 2025 was premature.\n\nThe arrears, however, are established by the respondent's ledger, which the appellant did not contest in figures.\n\nFOR THESE REASONS the court admits the appeal in form and, on the merits, sets aside the judgment below in so far as it ordered the appellant to vacate, confirms it as to the arrears of AED 96,000, and orders the respondent to bear half of the costs of the appeal.",
+ "text_len": 2104,
+ "text_sha256": "b678551d4167366f103db3d0d434cf4d053df02a496cc419399aa8ea20d46d7e",
+ "sentences_auto": [
+  [
+   0,
+   255
+  ],
+  [
+   257,
+   381
+  ],
+  [
+   383,
+   580
+  ],
+  [
+   582,
+   679
+  ],
+  [
+   681,
+   825
+  ],
+  [
+   827,
+   1041
+  ],
+  [
+   1043,
+   1287
+  ],
+  [
+   1289,
+   1560
+  ],
+  [
+   1562,
+   1723
+  ],
+  [
+   1725,
+   1838
+  ],
+  [
+   1840,
+   2104
+  ]
+ ],
+ "demonstrates": "a procedural line only B marked; the judgment below recited as fact or as decision; what the appellant asks, read as fact or as argument; a sentence neither annotator labelled quite right (argument, then issue); a citation nested in the reasoning by A only; one reasoning span across two paragraphs against two",
+ "spans": [
+  {
+   "kind": "rhetorical",
+   "label": "PREAMBLE",
+   "begin": 0,
+   "end": 255
+  },
+  {
+   "kind": "rhetorical",
+   "label": "FACTS",
+   "begin": 383,
+   "end": 580
+  },
+  {
+   "kind": "rhetorical",
+   "label": "FACTS",
+   "begin": 582,
+   "end": 679
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_PLAINTIFF",
+   "begin": 681,
+   "end": 825
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_DEFENDANT",
+   "begin": 827,
+   "end": 1041
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1043,
+   "end": 1287
+  },
+  {
+   "kind": "rhetorical",
+   "label": "LAW_REFERENCE",
+   "begin": 1043,
+   "end": 1074
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1289,
+   "end": 1560
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1562,
+   "end": 1723
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1725,
+   "end": 1838
+  },
+  {
+   "kind": "rhetorical",
+   "label": "DECISION_APPEAL",
+   "begin": 1840,
+   "end": 2104
+  }
+ ]
+}

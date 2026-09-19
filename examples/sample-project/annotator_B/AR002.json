@@ -1,0 +1,69 @@
+{
+ "canonical_case_id": "AR002",
+ "text_len": 1360,
+ "text_sha256": "ebf5c5b9958cab69392f09e4cc822d54d9625d95bf3da3cc17007cb8e2371d6b",
+ "blind": true,
+ "demonstrates": "Arabic: the heading as one unit or two; a citation nested in the reasoning by A only; a sentence that turns from the respondent's argument into the court's finding; a dismissive line only B marked",
+ "spans": [
+  {
+   "kind": "rhetorical",
+   "label": "PREAMBLE",
+   "begin": 0,
+   "end": 54
+  },
+  {
+   "kind": "rhetorical",
+   "label": "PREAMBLE",
+   "begin": 55,
+   "end": 162
+  },
+  {
+   "kind": "rhetorical",
+   "label": "FACTS",
+   "begin": 164,
+   "end": 338
+  },
+  {
+   "kind": "rhetorical",
+   "label": "FACTS",
+   "begin": 340,
+   "end": 474
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_PLAINTIFF",
+   "begin": 476,
+   "end": 623
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 625,
+   "end": 880
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 882,
+   "end": 1021
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1023,
+   "end": 1150
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1152,
+   "end": 1218
+  },
+  {
+   "kind": "rhetorical",
+   "label": "DECISION_APPEAL",
+   "begin": 1220,
+   "end": 1360
+  }
+ ]
+}

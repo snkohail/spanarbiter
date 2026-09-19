@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spanarbiter"
+version = "0.2.1"
+description = "SpanArbiter: a local workbench for resolving disagreements between two span annotators"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["annotation", "adjudication", "inter-annotator agreement", "corpus", "nlp"]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Text Processing :: Linguistic",
+]
+dependencies = []          # the tool itself runs on the standard library alone
+
+[project.optional-dependencies]
+test = ["pytest>=7", "pytest-playwright>=0.4"]
+
+[project.scripts]
+adjudicator = "adjudicator.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = ["ui: browser tests; need pytest-playwright and a chromium install"]
+filterwarnings = ["error::DeprecationWarning"]

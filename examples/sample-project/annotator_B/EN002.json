@@ -1,0 +1,69 @@
+{
+ "canonical_case_id": "EN002",
+ "text_len": 2104,
+ "text_sha256": "b678551d4167366f103db3d0d434cf4d053df02a496cc419399aa8ea20d46d7e",
+ "blind": true,
+ "demonstrates": "a procedural line only B marked; the judgment below recited as fact or as decision; what the appellant asks, read as fact or as argument; a sentence neither annotator labelled quite right (argument, then issue); a citation nested in the reasoning by A only; one reasoning span across two paragraphs against two",
+ "spans": [
+  {
+   "kind": "rhetorical",
+   "label": "PREAMBLE",
+   "begin": 0,
+   "end": 255
+  },
+  {
+   "kind": "rhetorical",
+   "label": "PREAMBLE",
+   "begin": 257,
+   "end": 381
+  },
+  {
+   "kind": "rhetorical",
+   "label": "DECISION",
+   "begin": 383,
+   "end": 580
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_PLAINTIFF",
+   "begin": 582,
+   "end": 679
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ISSUE",
+   "begin": 681,
+   "end": 825
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_DEFENDANT",
+   "begin": 827,
+   "end": 1041
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1043,
+   "end": 1287
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1289,
+   "end": 1723
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1725,
+   "end": 1838
+  },
+  {
+   "kind": "rhetorical",
+   "label": "DECISION_APPEAL",
+   "begin": 1840,
+   "end": 2104
+  }
+ ]
+}

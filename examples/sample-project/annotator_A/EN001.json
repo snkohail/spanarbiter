@@ -1,0 +1,127 @@
+{
+ "canonical_case_id": "EN001",
+ "text": "IN THE CIVIL COURT OF FIRST INSTANCE. Case number 802 of 2024. Between Al-Reef Contracting LLC, claimant, and Northgate Development Company, defendant. Judgment delivered on 7 October 2025.\n\nBy a contract dated 14 February 2022 the defendant engaged the claimant to build a warehouse for AED 7,400,000, with completion due on 20 November 2022. The works were taken over on 8 May 2023, 169 days late. The defendant then withheld the retention money of AED 370,000 and deducted AED 555,000 as liquidated damages.\n\nIn its statement of claim the claimant sought the retention money, the return of the liquidated damages, and AED 412,600 for variations it says were instructed on site.\n\nThe defendant relies on clause 8.7 of the contract, which fixes liquidated damages at AED 5,000 per day of delay, and denies that the variations were instructed in writing as clause 13 requires.\n\nThree issues arise: whether the delay is attributable to the claimant; whether the liquidated damages are recoverable in full; and whether the variations were validly instructed.\n\nArticle 390 of the Civil Transactions Law permits the court to vary an agreed compensation so that it reflects the loss actually suffered, and the burden of showing that the agreed sum exceeds that loss lies on the party who so contends.\n\nThe court-appointed expert found that 71 of the 169 days of delay were caused by late approval of the structural drawings by the defendant's consultant, and the remaining 98 days by the claimant's own resourcing. The defendant has shown no loss beyond two months of storage elsewhere, which its own invoices put at AED 84,000.\n\nAlthough the defendant maintains that the variations were never authorised, the signed site instructions produced by the claimant show that its resident engineer approved each of them.\n\nThe court notes that the defendant did not contest the authenticity of the site instructions, only their effect.\n\nThe liquidated damages are accordingly reduced to AED 355,000, being 71 days at the contractual rate, and the variations are allowed as valued.\n\nTHE COURT ORDERS the defendant to pay the claimant AED 370,000 as retention money, AED 200,000 as the excess of the liquidated damages deducted, and AED 412,600 for variations, together with legal interest at 5 per cent from the date of the claim, and the costs.",
+ "text_len": 2332,
+ "text_sha256": "e49997761c3a1deb947bff054f4fdc631d575319d1b2521e179725548173f29f",
+ "sentences_auto": [
+  [
+   0,
+   189
+  ],
+  [
+   191,
+   510
+  ],
+  [
+   512,
+   680
+  ],
+  [
+   682,
+   876
+  ],
+  [
+   878,
+   1056
+  ],
+  [
+   1058,
+   1295
+  ],
+  [
+   1297,
+   1623
+  ],
+  [
+   1625,
+   1809
+  ],
+  [
+   1811,
+   1923
+  ],
+  [
+   1925,
+   2068
+  ],
+  [
+   2070,
+   2332
+  ]
+ ],
+ "demonstrates": "one factual narrative against three events; a citation with or without the rule it states; a sentence that turns from the defendant's argument into the court's finding; a passing remark only A marked",
+ "spans": [
+  {
+   "kind": "rhetorical",
+   "label": "PREAMBLE",
+   "begin": 0,
+   "end": 189
+  },
+  {
+   "kind": "rhetorical",
+   "label": "FACTS",
+   "begin": 191,
+   "end": 510
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_PLAINTIFF",
+   "begin": 512,
+   "end": 680
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_DEFENDANT",
+   "begin": 682,
+   "end": 876
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ISSUE",
+   "begin": 878,
+   "end": 1056
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1058,
+   "end": 1295
+  },
+  {
+   "kind": "rhetorical",
+   "label": "LAW_REFERENCE",
+   "begin": 1058,
+   "end": 1099
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1297,
+   "end": 1623
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ARGUMENT_DEFENDANT",
+   "begin": 1634,
+   "end": 1699
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1811,
+   "end": 1923
+  },
+  {
+   "kind": "rhetorical",
+   "label": "ANALYSIS",
+   "begin": 1925,
+   "end": 2068
+  },
+  {
+   "kind": "rhetorical",
+   "label": "DECISION",
+   "begin": 2070,
+   "end": 2332
+  }
+ ]
+}
