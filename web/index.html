@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SpanArbiter</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#conflict">Skip to the current conflict</a>
+
+<header class="topbar">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 75 64" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M0 0h58v15h-8V8H8v7H0z"/>
+      <path fill="currentColor" d="M17 25h58v15h-8v-7H25v7h-8z"/>
+      <path fill="#b04a30" d="M20 51h34v13H20z"/>
+    </svg>
+    <span class="brand-name"><b>Span</b>Arbiter</span>
+  </div>
+
+  <div class="topbar-controls">
+    <label class="field">
+      <span class="field-label">Layer</span>
+      <select id="layer-select" aria-label="Annotation layer"></select>
+    </label>
+    <label class="field">
+      <span class="field-label">Document</span>
+      <select id="doc-select" aria-label="Document"></select>
+    </label>
+    <label class="field">
+      <span class="field-label">Show</span>
+      <select id="filter-select" aria-label="Filter conflicts">
+        <option value="open">Needs a decision</option>
+        <option value="all">All conflicts</option>
+        <option value="settled">Already decided</option>
+        <option value="deferred">Deferred</option>
+        <option value="ROLE_CLASH">Role clashes</option>
+        <option value="BOUNDARY_SHIFT">Boundary shifts</option>
+        <option value="SEGMENTATION">Segmentation</option>
+        <option value="NESTING_DIFF">Nesting differences</option>
+        <option value="A_ONLY">Only annotator A</option>
+        <option value="B_ONLY">Only annotator B</option>
+        <option value="MIXED">Mixed</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="topbar-actions">
+    <button id="project-btn" class="btn btn-quiet">Project</button>
+    <button id="guide-toggle" class="btn btn-quiet" aria-expanded="false" aria-controls="guide-panel">
+      Guidelines
+    </button>
+    <button id="export-btn" class="btn btn-quiet">Export</button>
+    <button id="theme-toggle" class="btn btn-icon" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" aria-label="Progress and navigation">
+    <section class="panel" aria-labelledby="doc-heading">
+      <h2 id="doc-heading" class="panel-title">Current document</h2>
+      <div id="progress-summary" class="progress-summary"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="shapes-heading">
+      <h2 id="shapes-heading" class="panel-title">Conflict types</h2>
+      <div id="progress-shapes" class="shape-list"></div>
+    </section>
+
+    <section class="panel panel-grow" aria-labelledby="corpus-heading">
+      <h2 id="corpus-heading" class="panel-title">Corpus</h2>
+      <div id="corpus-summary" class="corpus-summary"></div>
+      <div class="corpus-tools">
+        <input id="case-search" type="search" placeholder="Find a document…"
+               aria-label="Find a document">
+        <button id="next-incomplete" class="btn btn-quiet">Next incomplete</button>
+      </div>
+      <ol id="doc-list" class="doc-list"></ol>
+    </section>
+  </aside>
+
+  <main class="main">
+    <div id="messages" class="messages" role="status" aria-live="polite"></div>
+
+    <!-- 1. what is being decided -->
+    <section id="conflict" class="conflict-region" tabindex="-1" aria-label="Current conflict"></section>
+
+    <!-- 2. the decision, immediately under the evidence it is about -->
+    <div id="actions" class="actionrow" role="group" aria-label="Decision actions">
+      <button id="act-a"     class="btn btn-a"><kbd>1</kbd> Take A</button>
+      <button id="act-b"     class="btn btn-b"><kbd>2</kbd> Take B</button>
+      <button id="act-both"  class="btn"><kbd>3</kbd> Keep both</button>
+      <button id="act-roles" class="btn"><kbd>4</kbd> Both roles</button>
+      <span class="actionrow-gap" aria-hidden="true"></span>
+      <button id="act-edit"  class="btn"><kbd>E</kbd> Edit final</button>
+      <button id="act-drop"  class="btn"><kbd>D</kbd> Drop</button>
+      <button id="act-defer" class="btn"><kbd>S</kbd> Defer</button>
+    </div>
+
+    <!-- 3. broader context, on demand -->
+    <section id="context" class="context-region" hidden aria-label="Document context"></section>
+
+    <!-- 4. the editor, only once Edit is chosen -->
+    <section id="editor" class="editor-region" hidden aria-label="Build the resolved annotation"></section>
+  </main>
+
+  <aside id="guide-panel" class="guide-panel" hidden aria-label="Annotation guidelines">
+    <div class="guide-head">
+      <h2 class="panel-title">Annotation guidelines</h2>
+      <button id="guide-close" class="btn btn-icon" aria-label="Close guidelines">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div id="guide-body" class="guide-body"></div>
+  </aside>
+</div>
+
+<footer class="actionbar" aria-label="Navigation">
+  <div class="actionbar-nav">
+    <button id="act-context" class="btn btn-quiet"><kbd>C</kbd> Document context</button>
+  </div>
+  <div class="actionbar-nav">
+    <button id="act-prev" class="btn btn-quiet"><kbd>P</kbd> Prev</button>
+    <span id="position" class="position"></span>
+    <button id="act-next" class="btn btn-quiet">Next <kbd>N</kbd></button>
+  </div>
+</footer>
+
+<script type="module" src="/js/main.js"></script>
+
+<dialog id="project-dialog" class="dialog" aria-labelledby="project-dialog-title">
+  <form method="dialog" class="dialog-form">
+    <button id="project-dismiss" type="button" class="btn btn-icon dialog-dismiss"
+            aria-label="Close this panel">
+      <span aria-hidden="true">✕</span>
+    </button>
+    <h2 id="project-dialog-title" class="dialog-title">Project</h2>
+    <p class="dialog-lead">
+      Offsets only mean anything against the text the annotators saw, and roles are read from the
+      data. Check both before you start.
+    </p>
+
+    <div id="project-body" class="pf"></div>
+
+    <fieldset class="pf-open">
+      <legend>Open a different project</legend>
+      <p class="offsets">
+        A folder holding <code>annotator_A/</code> and <code>annotator_B/</code>. Decisions are
+        written inside it; nothing leaves this machine.
+      </p>
+      <div class="pf-open-row">
+        <input id="project-path" type="text" class="input" spellcheck="false"
+               placeholder="/path/to/project" aria-label="Project directory">
+        <button id="project-open" type="button" class="btn btn-primary">Open</button>
+      </div>
+      <p id="project-open-msg" class="pf-open-msg" role="status"></p>
+    </fieldset>
+
+    <div class="dialog-actions">
+      <button id="project-close" class="btn btn-primary" value="close">Start reviewing</button>
+    </div>
+  </form>
+</dialog>
+
+</body>
+</html>

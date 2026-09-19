@@ -1,0 +1,118 @@
+/* Design tokens.
+ *
+ * Colour encodes ANNOTATOR IDENTITY, never the role. There can be dozens of roles in a corpus
+ * and no palette distinguishes dozens of hues accessibly, so roles are always carried as text.
+ * The three identity hues below were validated with the all-pairs colour-vision check in both
+ * light and dark (worst CVD deltaE 9.2 light / 9.4 dark; worst normal-vision 24.0 / 20.9).
+ * A fourth hue could not clear the floors in both modes, so the reviewer's own draft is
+ * separated by LAYOUT - it lives in its own panel - rather than by a fourth colour.
+ */
+:root {
+  color-scheme: light;
+
+  --surface-0: #f4f4f2;
+  --surface-1: #fcfcfb;
+  --surface-2: #eeeeec;
+  --surface-raised: #ffffff;
+  --border: #d9d9d4;
+  --border-strong: #b9b9b2;
+
+  --ink-primary: #0b0b0b;
+  --ink-secondary: #52514e;
+  --ink-muted: #76756f;
+  --ink-inverse: #ffffff;
+
+  /* annotator identity - validated triad */
+  --a: #2a78d6;
+  --b: #eb6834;
+  --agreed: #1baf7a;
+  --a-wash: #2a78d61f;
+  --b-wash: #eb68341f;
+  --agreed-wash: #1baf7a1f;
+
+  --focus: #2a78d6;
+  --danger: #b3261e;
+  --warn: #8a5a00;
+  --ok: #1c6b45;
+
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --gap-1: 4px;
+  --gap-2: 8px;
+  --gap-3: 12px;
+  --gap-4: 16px;
+  --gap-5: 24px;
+  --gap-6: 32px;
+
+  --font-ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-doc: "Noto Naskh Arabic", "Geeza Pro", "Segoe UI", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+  --shadow-1: 0 1px 2px #0000000f, 0 1px 3px #0000000a;
+  --shadow-2: 0 4px 12px #00000014, 0 2px 4px #0000000f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface-0: #111110;
+    --surface-1: #1a1a19;
+    --surface-2: #232322;
+    --surface-raised: #262625;
+    --border: #373734;
+    --border-strong: #4d4d49;
+
+    --ink-primary: #ffffff;
+    --ink-secondary: #c3c2b7;
+    --ink-muted: #96958c;
+    --ink-inverse: #111110;
+
+    --a: #3987e5;
+    --b: #d95926;
+    --agreed: #199e70;
+    --a-wash: #3987e52e;
+    --b-wash: #d959262e;
+    --agreed-wash: #199e702e;
+
+    --focus: #3987e5;
+    --danger: #f2b8b5;
+    --warn: #e3b341;
+    --ok: #4ec98a;
+    --shadow-1: 0 1px 2px #00000052;
+    --shadow-2: 0 4px 14px #00000066;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-0: #111110;
+  --surface-1: #1a1a19;
+  --surface-2: #232322;
+  --surface-raised: #262625;
+  --border: #373734;
+  --border-strong: #4d4d49;
+
+  --ink-primary: #ffffff;
+  --ink-secondary: #c3c2b7;
+  --ink-muted: #96958c;
+  --ink-inverse: #111110;
+
+  --a: #3987e5;
+  --b: #d95926;
+  --agreed: #199e70;
+  --a-wash: #3987e52e;
+  --b-wash: #d959262e;
+  --agreed-wash: #199e702e;
+
+  --focus: #3987e5;
+  --danger: #f2b8b5;
+  --warn: #e3b341;
+  --ok: #4ec98a;
+  --shadow-1: 0 1px 2px #00000052;
+  --shadow-2: 0 4px 14px #00000066;
+}
+
+@media (prefers-contrast: more) {
+  :root { --border: var(--border-strong); }
+}
