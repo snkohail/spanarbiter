@@ -25,6 +25,7 @@ from .export import export_project
 from .progress import document_progress
 from .project import Project, resolve_project_layout, sha256_of
 from .store import DecisionStore, StoreError
+from .summary import corpus_summary
 
 WEB_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.abspath(__file__)))), "web")
@@ -241,6 +242,16 @@ class Handler(BaseHTTPRequestHandler):
                     with open(path, encoding="utf-8") as fh:
                         text = fh.read()        # re-read every time, so edits appear on reload
                 return self._json(200, {"path": path, "markdown": text})
+            if url.path == "/api/summary":
+                # The same report as `adjudicate.py summary`, computed from the stored logs and
+                # the current source annotations, plus where those logs and the exports live.
+                with self.state.lock:
+                    report = corpus_summary(self.state.project, self.state.store)
+                    out_dir = self.state.project.out_dir
+                    return self._json(200, {**report, "paths": {
+                        "decisions": os.path.abspath(os.path.join(self.state.store.out_dir, "decisions")),
+                        "export": os.path.abspath(os.path.join(out_dir, "export")),
+                    }})
             return self._json(404, {"error": "not found"})
         except StoreError as exc:
             self._json(409, {"error": str(exc), "kind": "corrupt_log"})

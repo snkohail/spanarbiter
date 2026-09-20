@@ -37,4 +37,5 @@ export const api = {
   decide: (body) => post('/api/decide', body),
   setLayer: (layer) => post('/api/layer', { layer }),
   exportAll: (opts = {}) => post('/api/export', opts),
+  summary: () => request('/api/summary'),
 };

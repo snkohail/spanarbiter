@@ -1217,3 +1217,38 @@ def test_picking_a_and_b_on_one_extent_cannot_be_saved_as_the_reviewers_own_judg
     page.wait_for_timeout(300)
     page.select_option("#filter-select", "open")
     page.wait_for_timeout(300)
+
+
+def test_the_summary_dialog_draws_the_state_of_the_work(page, app):
+    page.click("#summary-btn")
+    page.wait_for_selector("#summary-dialog[open]")
+    page.wait_for_selector("#summary-body .sm-status")
+    body = page.inner_text("#summary-body")
+    status = page.inner_text("#summary-body .sm-status")
+    assert status.startswith("Complete") or status.startswith("Provisional"), status
+    assert "Same text, different role" in body, "conflict types are named as they are in the queue"
+    assert "Cohen" in body and "F1" in body, "both agreement measures are shown and explained"
+    assert str(app["out"]) in body, "the dialog names where the logs and the exports live"
+    assert page.locator("#summary-body .sm-stack").count() >= 2, "progress and outcomes are bars"
+    assert page.locator("#summary-body .sm-gauge").count() == 2, "F1 and kappa are gauges"
+    page.click("#summary-close")
+    page.wait_for_selector("#summary-dialog", state="hidden")
+    assert page.errors == []
+
+
+def test_shortcuts_do_not_act_on_the_queue_behind_an_open_dialog(page):
+    page.select_option("#filter-select", "all")
+    page.wait_for_timeout(300)
+    page.keyboard.press("p"); page.keyboard.press("p"); page.keyboard.press("p")
+    page.wait_for_timeout(300)
+    before = page.inner_text("#position")
+    assert before.startswith("1 /")
+    page.click("#summary-btn")
+    page.wait_for_selector("#summary-dialog[open]")
+    page.keyboard.press("n")
+    page.wait_for_timeout(300)
+    page.click("#summary-dismiss")
+    page.wait_for_selector("#summary-dialog", state="hidden")
+    assert page.inner_text("#position") == before, "N must not move the queue behind a dialog"
+    page.select_option("#filter-select", "open")
+    assert page.errors == []

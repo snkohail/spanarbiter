@@ -199,3 +199,31 @@ def test_opening_a_directory_without_the_layout_leaves_the_project_alone(live, t
     assert caught.value.code == 400
     assert "annotator_A" in json.loads(caught.value.read())["error"]
     assert [d["doc_id"] for d in get(live["base"], "/api/documents")["documents"]] == ["D1"]
+
+
+def test_the_summary_endpoint_is_the_command_line_report_plus_where_things_live(live):
+    import os
+    from adjudicator.summary import corpus_summary
+
+    before = get(live["base"], "/api/summary")
+    assert before["conflicts"] == 1 and before["auto_agreed"] == 1 and before["adjudicated"] == 0
+    assert before["documents_complete"] == 0
+    assert before["agreement"]["role_kappa_on_shared_extents"]["n"] == 2
+    assert before["paths"]["decisions"] == os.path.abspath(
+        os.path.join(live["store"].out_dir, "decisions"))
+    assert before["paths"]["export"] == os.path.abspath(
+        os.path.join(live["project"].out_dir, "export"))
+
+    document = get(live["base"], "/api/document?id=D1")
+    conflict = next(c for c in document["conflicts"] if not c["agreed"])
+    post(live["base"], "/api/decide", {
+        "doc_id": "D1", "conflict_id": conflict["conflict_id"],
+        "spans": [{"begin": conflict["b_spans"][0]["begin"],
+                   "end": conflict["b_spans"][0]["end"],
+                   "labels": [conflict["b_spans"][0]["label"]], "origin": "B"}],
+        "seconds": 3})
+    after = get(live["base"], "/api/summary")
+    assert after["adjudicated"] == 1 and after["took_B"] == 1 and after["documents_complete"] == 1
+    # the interface shows exactly what the command line reports, nothing recomputed differently
+    assert {k: v for k, v in after.items() if k != "paths"} == corpus_summary(
+        live["project"], live["store"])

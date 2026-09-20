@@ -12,12 +12,9 @@ one that two careful annotators could reasonably reach; the rules below say how 
 | Case | What the two annotators disagree about |
 |---|---|
 | `EN001` | construction dispute: one factual narrative against three events · the citation with or without the rule it states · a sentence that turns from the defendant's argument into the court's finding · a passing remark only A marked |
-| `EN002` | tenancy appeal: a procedural line only B marked · the judgment below recited as fact or as decision · what the appellant asks, read as fact or as argument · a sentence neither annotator labelled quite right · a citation nested in the reasoning or not · one reasoning span across two paragraphs against two |
+| `EN002` | tenancy appeal: a procedural line only B marked · the judgment below as case history with the order nested as decision, or as decision throughout · what the appellant asks, read as fact or as argument · a sentence neither annotator labelled quite right · a citation nested in the reasoning or not · one reasoning span across two paragraphs against two |
 | `AR001` | labour dispute: the relief sought, read as fact or as argument · one defence memorandum against its two defences · a nested citation · a passing remark only A marked · the citation with or without the rule it states |
 | `AR002` | cassation: the heading as one unit or two · a nested citation · a sentence that turns from the respondent's argument into the court's finding · a dismissive line only B marked |
-
-A second project, `examples/preflight-problems`, holds what the preflight is there to catch: an
-annotator who stopped after three paragraphs, and a document only one annotator has.
 
 ## The roles
 
@@ -44,7 +41,9 @@ annotator who stopped after three paragraphs, and a document only one annotator 
 - **The relief sought.** A sentence recording what a party asked for is at once part of the
   facts of the case and that party's argument (`EN002`, `AR001`). Record both roles rather than
   losing one: *Both roles*.
-- **An earlier ruling recited** by the court is `DECISION` (`EN002`).
+- **An earlier ruling recited** by the court. The order itself is `DECISION`; the sentence that
+  recites it is case history, `FACTS`, with the `DECISION` nested inside. Keep the reading that
+  has both (`EN002`).
 - **Transitions.** A sentence that opens with a party's contention and turns into the court's
   finding (`EN001`, `AR002`) is two things in sequence. Edit the final annotation: the contention
   as `ARGUMENT_DEFENDANT`, the finding as `ANALYSIS`, split where the sentence turns. The same

@@ -11,6 +11,7 @@ import {
   renderEditor, quickDrafts, toWire, keepBothIsSafe, bothRolesIsAvailable, mergedDisagreements,
 } from './views/editor.js';
 import { renderPreflight } from './views/preflight.js';
+import { renderSummary } from './views/summary.js';
 import { renderProgress, renderShapes, renderDocList } from './views/sidebar.js';
 import { selectionOffsets } from './text.js';
 
@@ -205,6 +206,7 @@ async function commit(drafts, intent = null, { advance = true } = {}) {
       : intent === 'DEFER' ? 'Deferred — this document is not complete until it is resolved.'
       : `Saved as ${result.decision.decision_type.replace(/_/g, ' ')}.`);
 
+    markSummaryButton(true);
     timer.settle(conflict.conflict_id);
     boundConflictId = null;
     if (advance) {
@@ -233,7 +235,22 @@ async function commit(drafts, intent = null, { advance = true } = {}) {
 }
 
 // ------------------------------------------------------------------ rendering
+let rendering = false;
+let renderAgain = false;
+/** Never re-enter: an emit raised while the old nodes are torn down (a change handler on a
+ *  focused offset box, for example) is honoured by one more pass once this one is done. */
 function render() {
+  if (rendering) { renderAgain = true; return; }
+  rendering = true;
+  try {
+    renderOnce();
+  } finally {
+    rendering = false;
+  }
+  if (renderAgain) { renderAgain = false; render(); }
+}
+
+function renderOnce() {
   ensureDrafts();
   const conflict = currentConflict();
   const list = visibleConflicts();
@@ -348,6 +365,7 @@ async function openDocument(docId) {
 async function refreshDocuments() {
   const { documents } = await api.documents();
   state.documents = documents;
+  markSummaryButton(false);
   replace($('doc-select'), documents.map((d) => el('option', {
     value: d.doc_id, text: `${d.doc_id}${d.complete ? ' ✓' : ` — ${d.settled}/${d.conflicts}`}`,
   })));
@@ -497,6 +515,8 @@ const KEYS = {
 };
 document.addEventListener('keydown', (event) => {
   if (event.metaKey || event.ctrlKey || event.altKey) return;
+  // A shortcut pressed while a panel is open must not act on the queue behind it.
+  if (document.querySelector('dialog[open]')) return;
   const target = event.target;
   if (target instanceof HTMLElement
       && (target.tagName === 'TEXTAREA' || target.isContentEditable
@@ -560,6 +580,44 @@ $('project-dismiss').onclick = () => $('project-dialog').close();
 // is the <dialog> itself only when the click landed on the backdrop, never inside the form.
 $('project-dialog').addEventListener('click', (event) => {
   if (event.target === $('project-dialog')) $('project-dialog').close();
+});
+
+// ------------------------------------------------------------------ summary
+/** The button stays available throughout: the report says "Provisional" until every conflict
+ *  is decided, and lights up at the moment the last one is. */
+function markSummaryButton(announce) {
+  const docs = state.documents || [];
+  const done = docs.length > 0 && docs.every((d) => d.complete && !d.error);
+  const button = $('summary-btn');
+  const was = button.classList.contains('is-ready');
+  button.classList.toggle('is-ready', done);
+  button.title = done ? 'Every conflict is decided: the summary is final'
+    : 'Progress and outcomes so far; final once every conflict is decided';
+  if (done && !was && announce) {
+    say('ok', 'Every conflict is decided. Export and Summary are ready.', true);
+  }
+}
+
+async function showSummary() {
+  const dialog = $('summary-dialog');
+  replace($('summary-body'), el('p', { class: 'sm-small', text: 'Computing from the stored decisions…' }));
+  if (!dialog.open) {
+    timer.pause();          // reading a report is not judging a conflict
+    dialog.showModal();
+  }
+  try {
+    renderSummary($('summary-body'), await api.summary());
+  } catch (error) {
+    replace($('summary-body'), el('p', { class: 'msg msg-error',
+      text: `The summary could not be computed: ${error.message}` }));
+  }
+}
+
+$('summary-btn').onclick = showSummary;
+$('summary-dialog').addEventListener('close', () => timer.resume());
+$('summary-dismiss').onclick = () => $('summary-dialog').close();
+$('summary-dialog').addEventListener('click', (event) => {
+  if (event.target === $('summary-dialog')) $('summary-dialog').close();
 });
 
 function openMessage(text, tone) {

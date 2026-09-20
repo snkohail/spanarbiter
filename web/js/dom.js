@@ -26,7 +26,10 @@ export function el(tag, props = {}, ...children) {
 }
 
 export function clear(node) {
-  while (node.firstChild) node.removeChild(node.firstChild);
+  // Removing a focused input fires its change/blur handlers first. If one of them re-renders
+  // this same container, the child is already gone by the time it would be removed here;
+  // ChildNode.remove() tolerates that where removeChild() would throw.
+  while (node.firstChild) node.firstChild.remove();
 }
 
 export function replace(node, ...children) {

@@ -3,7 +3,7 @@
  "text_len": 2104,
  "text_sha256": "b678551d4167366f103db3d0d434cf4d053df02a496cc419399aa8ea20d46d7e",
  "blind": true,
- "demonstrates": "a procedural line only B marked; the judgment below recited as fact or as decision; what the appellant asks, read as fact or as argument; a sentence neither annotator labelled quite right (argument, then issue); a citation nested in the reasoning by A only; one reasoning span across two paragraphs against two",
+ "demonstrates": "a procedural line only B marked; the judgment below as case history with the order nested as decision, or as decision throughout; what the appellant asks, read as fact or as argument; a sentence neither annotator labelled quite right (argument, then issue); a citation nested in the reasoning by A only; one reasoning span across two paragraphs against two",
  "spans": [
   {
    "kind": "rhetorical",

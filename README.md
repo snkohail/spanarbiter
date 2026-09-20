@@ -149,6 +149,12 @@ Two products, and the first is never sacrificed for the second.
 
 `<out>/decisions/` holds the working log, one file per document and layer, written atomically.
 
+In the interface, **Summary** in the top bar shows the same report as charts: progress, where
+the final annotation came from (equals A, equals B, both, neither), conflict types with the
+median time each took, decision types, time and revisions, and the two agreement measures,
+and it names the folders where the logs and exports are. It reads *Provisional* until every
+conflict is decided and *Complete* from then on; the button lights up at that moment.
+
 ```bash
 python3 adjudicate.py check   --project PROJ                  # validate, don't start
 python3 adjudicate.py export  --project PROJ --adjudicator C  # canonical + roundtrip + spans.tsv
@@ -186,7 +192,7 @@ src/adjudicator/
   cli.py           check / serve / export / summary
 adjudicate.py      launcher, so a fresh clone runs with nothing installed
 web/               interface: ES modules, no build step
-tests/             277 tests (60 of them drive a real browser)
+tests/             280 tests (60 of them drive a real browser)
 docs/              input formats and output schema
 examples/          the sample project: four synthetic cases, doubly annotated
 ```
@@ -227,7 +233,7 @@ three formats that are read.
 
 ```bash
 pip install -e ".[test]" && playwright install chromium
-python3 -m pytest                      # 277 tests
+python3 -m pytest                      # 280 tests
 python3 -m pytest -m "not ui"          # skip the 60 browser tests
 ```
 

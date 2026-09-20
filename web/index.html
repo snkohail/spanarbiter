@@ -54,6 +54,7 @@
       Guidelines
     </button>
     <button id="export-btn" class="btn btn-quiet">Export</button>
+    <button id="summary-btn" class="btn btn-quiet">Summary</button>
     <button id="theme-toggle" class="btn btn-icon" aria-label="Switch between light and dark">
       <span aria-hidden="true">◐</span>
     </button>
@@ -163,6 +164,27 @@
 
     <div class="dialog-actions">
       <button id="project-close" class="btn btn-primary" value="close">Start reviewing</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="summary-dialog" class="dialog dialog-wide" aria-labelledby="summary-dialog-title">
+  <form method="dialog" class="dialog-form">
+    <button id="summary-dismiss" type="button" class="btn btn-icon dialog-dismiss"
+            aria-label="Close this panel">
+      <span aria-hidden="true">✕</span>
+    </button>
+    <h2 id="summary-dialog-title" class="dialog-title">Adjudication summary</h2>
+    <p class="dialog-lead">
+      Every figure is recomputed from the stored resolved spans against both annotators'
+      annotations, never from the button that was pressed. The command
+      <code>adjudicate.py summary</code> gives the same report.
+    </p>
+
+    <div id="summary-body" class="sm"></div>
+
+    <div class="dialog-actions">
+      <button id="summary-close" class="btn btn-primary" value="close">Back to the queue</button>
     </div>
   </form>
 </dialog>
